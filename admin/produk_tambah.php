@@ -11,6 +11,7 @@ if (isset($_POST['submit'])) {
     $nama = $_POST['nama'];
     $harga = $_POST['harga'];
     $kategori = $_POST['kategori'];
+    $stok = $_POST['stok'];
     $deskripsi = $_POST['deskripsi'];
 
     // Upload gambar
@@ -24,8 +25,8 @@ if (isset($_POST['submit'])) {
         $gambar = "default.jpg"; // jika tidak upload gambar
     }
 
-    $query = "INSERT INTO produk (nama, harga, kategori, deskripsi, gambar) 
-              VALUES ('$nama', '$harga', '$kategori', '$deskripsi', '$gambar')";
+    $query = "INSERT INTO produk (nama, harga, kategori, stok, deskripsi, gambar) 
+              VALUES ('$nama', '$harga', '$kategori', '$stok', '$deskripsi', '$gambar')";
     mysqli_query($conn, $query);
 
     header("Location: produk.php");
