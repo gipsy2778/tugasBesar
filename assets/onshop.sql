@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2025 at 02:54 PM
+-- Generation Time: Jun 14, 2025 at 02:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -54,8 +54,10 @@ CREATE TABLE `pesanan` (
 --
 
 INSERT INTO `pesanan` (`id`, `user_id`, `tanggal`, `total`, `status`) VALUES
-(1, 1, '2025-06-11 14:25:48', 163000.00, 'proses'),
-(2, 1, '2025-06-11 15:55:42', 190000.00, 'proses');
+(1, 1, '2025-06-11 14:25:48', 163000.00, 'selesai'),
+(2, 1, '2025-06-11 15:55:42', 190000.00, 'selesai'),
+(3, 1, '2025-06-11 22:10:06', 55000.00, 'selesai'),
+(4, 1, '2025-06-13 13:16:57', 110000.00, 'selesai');
 
 -- --------------------------------------------------------
 
@@ -78,7 +80,9 @@ CREATE TABLE `pesanan_detail` (
 INSERT INTO `pesanan_detail` (`id`, `pesanan_id`, `produk_id`, `jumlah`, `harga`) VALUES
 (1, 1, 1, 1, 55000.00),
 (2, 1, 2, 1, 108000.00),
-(3, 2, 3, 2, 95000.00);
+(3, 2, 3, 2, 95000.00),
+(4, 3, 1, 1, 55000.00),
+(5, 4, 1, 2, 55000.00);
 
 -- --------------------------------------------------------
 
@@ -104,7 +108,14 @@ CREATE TABLE `produk` (
 INSERT INTO `produk` (`id`, `nama`, `harga`, `deskripsi`, `gambar`, `stok`, `diskon`, `kategori`) VALUES
 (1, 'Kaos Polos Hitam', 55000, 'Kaos katun berkualitas tinggi', 'baju1.jpg', 100, 0, 'Baju'),
 (2, 'Hoodie Abu', 120000, 'Hoodie nyaman untuk musim dingin', 'baju2.jpg', 50, 10, 'Baju'),
-(3, 'Kemeja Kotak', 95000, 'Kemeja dengan motif kotak modern', 'baju3.jpg', 75, 0, 'Baju');
+(3, 'Kemeja Kotak', 95000, 'Kemeja dengan motif kotak modern', 'baju3.jpg', 75, 0, 'Baju'),
+(7, 'Celana Jeans', 97000, 'Celana Merecet Import', 'celana.jpg', 10, 0, 'Celana'),
+(8, 'Celana Lari', 75000, 'Celana Abu, Cocok untuk Lari', 'produkcelana2.jpg', 0, 0, 'Celana'),
+(9, 'Pulpen', 3000, 'Pen', '2812f92bd57c014cbb1fa85042375869.jpg', 0, 0, 'Lainnya'),
+(10, 'Jaket Hitam', 120000, 'Hanet ples Haredang', 'fc03500ac3263284f9e5af2e13a100a1.jpg', 0, 0, 'Baju'),
+(11, 'Jaket Merah', 95000, 'Mataram is Red', 'OIP.webp', 0, 0, 'Baju'),
+(14, 'Jam Tangan Hitam Pria', 150000, 'Ini Jam', 'produksg-11134201-23020-wvzkcruykbnvc7.jpg', 0, 0, 'Aksesoris'),
+(15, 'Kaos Ben10', 45000, 'BBB', 'produkid-11134207-7qul8-lk7ptgxbj8kib7.jpg', 18, 0, 'Baju');
 
 -- --------------------------------------------------------
 
@@ -124,7 +135,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES
-(1, 'jj', '$2y$10$OxLE5yQiQvF4Z9uoQ7SLTOKaUCzrPgMeVgqXF/3/EBlwjZtl5mTuO', 'user');
+(1, 'jj', '$2y$10$OxLE5yQiQvF4Z9uoQ7SLTOKaUCzrPgMeVgqXF/3/EBlwjZtl5mTuO', 'user'),
+(3, 'aa', '$2y$10$A4aSPAnWZvpmsPexogIEKOfynh8sqqQ.MCT4d4etK1732JkSAZ1Hi', 'admin'),
+(4, 'pp', '$2y$10$q15y9s/jFCVmu/w6Rvoi3Ox9FSTVYSqpzu7hnAelrXGXSyUEzGCGK', 'user');
 
 --
 -- Indexes for dumped tables
@@ -174,31 +187,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pesanan_detail`
 --
 ALTER TABLE `pesanan_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
