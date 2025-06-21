@@ -1,17 +1,19 @@
 <?php
-session_start();
-include 'koneksi.php';
+// Ambil data dari cookie
+$cart = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit;
+// Ambil ID produk yang akan dihapus
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+// Hapus item jika ada
+if ($id && isset($cart[$id])) {
+    unset($cart[$id]);
+
+    // Simpan kembali ke cookie (1 hari)
+    setcookie('cart', json_encode($cart), time() + (86400), '/');
 }
 
-$id = (int)$_GET['id'];
-$user_id = $_SESSION['user_id'];
-
-// Hapus item keranjang milik user
-mysqli_query($conn, "DELETE FROM keranjang WHERE id = $id AND user_id = $user_id");
-
+// Kembali ke keranjang
 header("Location: keranjang.php");
 exit;
+?>
